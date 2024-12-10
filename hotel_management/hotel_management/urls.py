@@ -16,7 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from hotels.views import HotelListAPIView, RoomListAPIView, RoomDetailAPIView, HotelDetailAPIView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/hotels/', HotelListAPIView.as_view(), name='hotel-list'),
+    path('api/hotels/<int:pk>/', HotelDetailAPIView.as_view(), name='hotel-detail'),
+    path('api/rooms/', RoomListAPIView.as_view(), name='room-list'),
+    path('api/rooms/<int:room_id>/', RoomDetailAPIView.as_view(), name='room-detail'),
 ]
